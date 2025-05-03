@@ -1,0 +1,13 @@
+Flask
+gunicorn
+requests
+flask_bcrypt
+sqlalchemy
+flask_wtf
+wtforms
+Flask-Psycopg2
+Werkzeug
+Flask-Session
+email_validator
+stripe==2.48.0
+Flask-SQLAlchemy==2.4.1

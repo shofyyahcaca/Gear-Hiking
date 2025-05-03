@@ -1,0 +1,56 @@
+import flask
+
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, timedelta
+from ortools.sat.python import cp_model
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///rentals.db'
+app.config['SECRET_KEY'] = 'your_secret_key'
+db = SQLAlchemy(app)
+
+# Database Model
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(100), nullable=False)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.String(20), default='Pending')
+
+# CSP Optimization Function
+def optimize_schedule():
+    bookings = Booking.query.all()
+    model = cp_model.CpModel()
+    tasks = {}
+    for booking in bookings:
+        tasks[booking.id] = model.NewIntVar(0, 1000, f'booking_{booking.id}')
+    for i, b1 in enumerate(bookings):
+        for j, b2 in enumerate(bookings):
+            if i < j and b1.end_date > b2.start_date and b1.start_date < b2.end_date:
+                model.Add(tasks[b1.id] != tasks[b2.id])
+    solver = cp_model.CpSolver()
+    status = solver.Solve(model)
+    return status == cp_model.OPTIMAL
+
+@app.route('/')
+def index():
+    bookings = Booking.query.all()
+    return render_template('index.html', bookings=bookings)
+
+@app.route('/book', methods=['POST'])
+def book():
+    user = request.form['user']
+    start_date = datetime.strptime(request.form['start_date'], '%Y-%m-%d')
+    end_date = datetime.strptime(request.form['end_date'], '%Y-%m-%d')
+    new_booking = Booking(user=user, start_date=start_date, end_date=end_date)
+    db.session.add(new_booking)
+    db.session.commit()
+    optimize_schedule()
+    flash('Booking submitted successfully!', 'success')
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
