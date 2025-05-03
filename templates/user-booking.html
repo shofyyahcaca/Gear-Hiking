@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>My Rentals :: Hiking Gear Rental</title>
+    
+    <link rel="icon" href="{{ url_for('static', filename='images/hiking.png') }}">
+    
+    <meta property="og:url" content="http://hiking-gear-rental.herokuapp.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hiking Gear Rental" />
+    <meta property="og:description" content="Sewa perlengkapan hiking dengan mudah dan cepat!" />
+    <meta property="og:image" content="{{ url_for('static', filename='images/hiking.png') }}" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hiking Gear Rental">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Gear Rental">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{{ url_for('index') }}" class="brand-logo">Hiking Gear Rental</a>
+          <ul class="right">
+            {% if user_id %}
+              <li><a href="{{ url_for('myaccount') }}">My Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+              <li><a href="{{ url_for('login') }}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <br><br>
+    
+    <article class="container">
+      <div class="row text-center">
+        <div class="col">
+          <h1>My Rentals</h1>
+          <hr style="border: 1px solid brown; width: 10%">
+          <br>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <table class="highlight centered responsive-table">
+            <thead>
+              <tr>
+                <th> Rental ID </th>
+                <th> Name </th>
+                <th> Contact No </th>
+                <th> Special Request </th>
+                <th> Rental Start Date </th>
+                <th> Rental End Date </th>
+                <th> Days </th>
+                <th> Total </th>
+                <th> Gear Type </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for rental in rentals %}
+                <tr>
+                  <td> {{ rental.id }} </td>
+                  <td> {{ rental.prefix~'.' ~ ' ' ~ rental.fname ~ ' ' ~ rental.lname }} </td>
+                  <td> {{ rental.isdcode ~ ' ' ~ ' - ' ~ rental.contactno }} </td>
+                  <td> {{ rental.sp_req }} </td>
+                  <td> {{ rental.start_date }} </td>
+                  <td> {{ rental.end_date }} </td>
+                  <td> {{ rental.days }} </td>
+                  <td> {{ rental.total }} </td>
+                  <td> {{ rental.gear_type|capitalize }} </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <br><br><br>
+
+    <footer class="container text-center">
+      <div class="row">
+        <div class="col my-auto">
+          <h4>Hiking Gear Rental</h4>
+        </div>
+        <div class="col my-auto">
+          <h5>&copy; 2025. All Rights Reserved.</h5>
+        </div>
+        <div class="col my-auto">
+          <ul>
+            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

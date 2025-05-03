@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Payment :: Hiking Rental</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Equipment Rental Payment">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ url_for('index') }}" class="brand-logo">Hiking Rental</a>
+                <ul class="right">
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container" id="payment-section">
+        <h2 class="text-center">Payment Details</h2>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Order Summary</h4>
+                <p>Rental Items: {{ rental_items }}</p>
+                <p>Rental Duration: {{ rental_days }} days</p>
+                <p>Subtotal: &#8377; {{ subtotal }}</p>
+                <p>Tax (10%): &#8377; {{ tax_amount }}</p>
+                <h4>Total: &#8377; {{ total_amount }}</h4>
+            </div>
+
+            <div class="col-md-6">
+                <h4>Choose Payment Method</h4>
+                <form action="{{ url_for('process_payment') }}" method="post">
+                    <div class="form-group">
+                        <label for="card_number">Card Number</label>
+                        <input type="text" class="form-control" id="card_number" name="card_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expiry_date">Expiry Date</label>
+                        <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container text-center">
+        <p>&copy; 2025 Hiking Rental. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

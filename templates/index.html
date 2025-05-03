@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyewaan Alat Hiking - Hiking Rent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: url('static/images/hiking-banner.jpg') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        .product-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card img:hover {
+            transform: scale(1.05);
+        }
+        .btn-custom {
+            background-color: #ff9800;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <nav class="blue darken-3">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Hiking Rent</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#products">Sewa Alat</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        Temukan Peralatan Hiking Terbaik Untuk Petualangan Anda
+    </div>
+    
+    <div class="container" id="products">
+        <h2 class="center-align">Peralatan Hiking Tersedia</h2>
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card product-card">
+                    <div class="card-image">
+                        <img src="static/images/tent.jpg" alt="Tenda">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Tenda 2 Orang</span>
+                        <p>Harga: Rp 50.000/hari</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn btn-custom">Sewa Sekarang</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card product-card">
+                    <div class="card-image">
+                        <img src="static/images/backpack.jpg" alt="Carrier">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Carrier 60L</span>
+                        <p>Harga: Rp 40.000/hari</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn btn-custom">Sewa Sekarang</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card product-card">
+                    <div class="card-image">
+                        <img src="static/images/sleeping-bag.jpg" alt="Sleeping Bag">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Sleeping Bag</span>
+                        <p>Harga: Rp 30.000/hari</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn btn-custom">Sewa Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="page-footer blue darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Hiking Rent</h5>
+                    <p class="grey-text text-lighten-4">Menyediakan perlengkapan hiking berkualitas untuk perjalanan Anda.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Kontak Kami</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#">Instagram</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#">WhatsApp</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center-align">
+                © 2025 Hiking Rent
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

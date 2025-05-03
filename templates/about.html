@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>About Us :: Hiking Gear Rental</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/hiking_icon.png') }}">
+
+    <meta property="og:url" content="http://hiking-gear-rental.herokuapp.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hiking Gear Rental" />
+    <meta property="og:description" content="Sewa alat hiking terbaik untuk petualangan Anda!" />
+    <meta property="og:image" content="{{ url_for('static', filename='images/hiking_icon.png') }}" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hiking Gear Rental">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Tempat Penyewaan Alat Hiking Terbaik">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{{ url_for('index') }}" class="brand-logo">Hiking Gear Rental</a>
+          <ul class="right">
+            {% if user_id %}
+              <li><a href="{{ url_for('myaccount') }}">Hi, {{ user_name }}</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+              <li><a href="{{ url_for('login') }}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container" id="breadcrumb">
+      <div class="row text-center">
+        <div class="col-12">
+          <h1> About Us </h1>
+        </div>
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">About</li>
+        </ol>
+      </nav>
+    </section>
+
+    <article class="container">
+      <div class="row text-center">
+        <div class="col-md-6">
+          <img class="responsive-img img-fluid" src="{{ url_for('static', filename='images/hiking_store.jpg') }}" alt="Rental Store">
+        </div>
+        <div class="col-md-6 text-left">
+          <h3> Tentang Kami </h3>
+          <p>Kami menyediakan berbagai alat hiking berkualitas untuk mendukung perjalanan petualangan Anda. Mulai dari tenda, carrier, sleeping bag, hingga peralatan memasak di alam bebas.</p>
+        </div>
+      </div>
+    </article>
+
+    <aside class="container jumbotron">
+      <div class="row text-center">
+        <div class="col-md-3">
+          <p><img src="{{ url_for('static', filename='images/gear.svg') }}" alt=""> Peralatan Lengkap</p>
+          <p>Semua yang Anda butuhkan untuk hiking tersedia di sini.</p>
+        </div>
+        <div class="col-md-3">
+          <p><img src="{{ url_for('static', filename='images/user.svg') }}" alt=""> Tim Profesional</p>
+          <p>Tim kami siap membantu memilihkan peralatan terbaik untuk Anda.</p>
+        </div>
+        <div class="col-md-3">
+          <p><img src="{{ url_for('static', filename='images/happy.svg') }}" alt=""> Pelanggan Puas</p>
+          <p>Kami telah membantu ratusan pendaki dalam petualangan mereka.</p>
+        </div>
+        <div class="col-md-3">
+          <p><img src="{{ url_for('static', filename='images/payment.svg') }}" alt=""> Pembayaran Mudah</p>
+          <p>Terima pembayaran via transfer bank, e-wallet, atau kartu kredit.</p>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="container jumbotron">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <h4>Hiking Gear Rental</h4>
+        </div>
+        <div class="col-md-4">
+          <h5>&copy; 2025. All Rights Reserved.</h5>
+        </div>
+        <div class="col-md-4">
+          <ul>
+            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

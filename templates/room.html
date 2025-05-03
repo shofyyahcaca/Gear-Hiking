@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Rental Gear :: Hiking Adventure</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/hiking_icon.png') }}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Adventure - Rent Your Hiking Gear">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rental.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{{ url_for('index') }}" class="brand-logo">Hiking Adventure</a>
+          <ul class="right">
+            {% if user_id %}
+              <li><a href="{{ url_for('myaccount') }}">My Profile</a></li>
+              <li><a href="{{ url_for('user_rentals') }}">My Rentals</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+              <li><a href="{{ url_for('login') }}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container" id="breadcrumb">
+      <h1> Rental Gear </h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Rental Gear</li>
+        </ol>
+      </nav>
+    </section>
+
+    <article class="container" id="gearlist">
+      <h2> Available Gear for Rent </h2>
+      <div class="row">
+        <div class="col-md-6">
+          <figure>
+            <img class="responsive-img" src="{{ url_for('static', filename='images/tent.jpg') }}" alt="Camping Tent">
+            <figcaption>
+              <h5>Camping Tent</h5>
+              <h5 class="price">From $20/day</h5>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure>
+            <img class="responsive-img" src="{{ url_for('static', filename='images/backpack.jpg') }}" alt="Hiking Backpack">
+            <figcaption>
+              <h5>Hiking Backpack</h5>
+              <h5 class="price">From $15/day</h5>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <figure>
+            <img class="responsive-img" src="{{ url_for('static', filename='images/sleeping-bag.jpg') }}" alt="Sleeping Bag">
+            <figcaption>
+              <h5>Sleeping Bag</h5>
+              <h5 class="price">From $10/day</h5>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure>
+            <img class="responsive-img" src="{{ url_for('static', filename='images/trekking-poles.jpg') }}" alt="Trekking Poles">
+            <figcaption>
+              <h5>Trekking Poles</h5>
+              <h5 class="price">From $5/day</h5>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <footer class="container">
+      <h4>Hiking Adventure</h4>
+      <h5>&copy; 2025. All Rights Reserved.</h5>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
+</html>

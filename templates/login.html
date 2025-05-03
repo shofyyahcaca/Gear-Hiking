@@ -1,0 +1,57 @@
+from flask import Flask, render_template, request, redirect, url_for, session
+
+app = Flask(__name__)
+app.secret_key = 'secret_key'
+
+# Dummy user data
+users = {'admin': 'password123'}
+
+# Dummy hiking gear inventory
+inventory = [
+    {'id': 1, 'name': 'Tenda Camping', 'price': 50000, 'stock': 5},
+    {'id': 2, 'name': 'Carrier 60L', 'price': 30000, 'stock': 3},
+    {'id': 3, 'name': 'Kompor Portable', 'price': 20000, 'stock': 4},
+]
+
+# Cart
+cart = []
+
+@app.route('/')
+def home():
+    return render_template('home.html', inventory=inventory)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username] == password:
+            session['user'] = username
+            return redirect(url_for('home'))
+        return "Login gagal, coba lagi!"
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('home'))
+
+@app.route('/add_to_cart/<int:item_id>')
+def add_to_cart(item_id):
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    for item in inventory:
+        if item['id'] == item_id and item['stock'] > 0:
+            cart.append(item)
+            item['stock'] -= 1
+            break
+    return redirect(url_for('home'))
+
+@app.route('/cart')
+def view_cart():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return render_template('cart.html', cart=cart)
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>My Profile :: Hiking Gear Rental</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/hiking_icon.png') }}">
+
+    <meta property="og:url" content="http://hiking-gear-rental.herokuapp.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hiking Gear Rental" />
+    <meta property="og:description" content="Rent high-quality hiking gear at affordable prices." />
+    <meta property="og:image" content="{{ url_for('static', filename='images/hiking_icon.png') }}" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hiking Gear Rental">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Gear Rental - Your trusted rental service for hiking equipment.">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rental-home.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Hiking Gear Rental</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('gear') }}">Gear</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a></li>
+            {% if user_id %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hey {{ user_name }}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ url_for('myaccount') }}">My Profile</a>
+                  <a class="dropdown-item" href="{{ url_for('user_rentals') }}">My Rentals</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+              </li>
+            {% else %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="container mt-5">
+      <h2 class="text-center">My Profile</h2>
+      <hr>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ us_detail.fname ~ ' ' ~ us_detail.lname }}</td>
+            <td>{{ us_detail.username }}</td>
+            <td>{{ us_detail.email }}</td>
+            <td>{{ us_detail.contactno }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <section class="text-center">
+        <h2>Edit Profile</h2>
+        <form action="" method="post">
+          {{ emp.hidden_tag() }}
+          <div class="form-group">
+            {{ emp.fname.label }}
+            {{ emp.fname(class='form-control') }}
+          </div>
+          <div class="form-group">
+            {{ emp.lname.label }}
+            {{ emp.lname(class='form-control') }}
+          </div>
+          <div class="form-group">
+            {{ emp.username.label }}
+            {{ emp.username(class='form-control') }}
+          </div>
+          <div class="form-group">
+            {{ emp.email.label }}
+            {{ emp.email(class='form-control') }}
+          </div>
+          <div class="form-group">
+            {{ emp.contactno.label }}
+            {{ emp.contactno(class='form-control') }}
+          </div>
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+      </section>
+      <br>
+      <div class="text-center">
+        <a href="{{ url_for('delete') }}" class="btn btn-danger">Delete My Account</a>
+      </div>
+    </main>
+    <footer class="text-center mt-5">
+      <p>&copy; 2025 Hiking Gear Rental. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>

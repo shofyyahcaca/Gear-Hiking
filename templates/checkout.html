@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Checkout :: Hiking Gear Rental</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Gear Rental Checkout">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Hiking Gear Rental</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('gear') }}">Gear</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+              {% if user_id %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+              {% else %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login / Signup</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container my-5">
+      <h2 class="text-center">Checkout</h2>
+      <hr>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Rental Details</h4>
+          <p><strong>Gear:</strong> {{ gear_name }}</p>
+          <p><strong>Pickup Date:</strong> {{ pickup_date }}</p>
+          <p><strong>Return Date:</strong> {{ return_date }}</p>
+          <p><strong>Duration:</strong> {{ rental_days }} days</p>
+        </div>
+        <div class="col-md-6">
+          <h4>Summary Charges</h4>
+          <p>Rental Price: &#8377; {{ base_price }}</p>
+          <p>Taxes and Fees: &#8377; {{ tax_amount }}</p>
+          <h4>Total: &#8377; {{ total_price }}</h4>
+          <p class="text-muted">Inclusive of all taxes.</p>
+          <a href="{{ url_for('confirm_rental') }}" class="btn btn-primary">Confirm Rental</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center py-4 bg-dark text-white">
+      <p>&copy; 2025 Hiking Gear Rental. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Rental Details :: Hiking Gear</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/hiking.png') }}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="Hiking Gear Rental">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Hiking Gear Rental</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('gear') }}">Gear</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+            {% if user_id %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="container mt-4">
+      <h2 class="text-center">Available Hiking Gear</h2>
+      <div class="row">
+        {% for gear in gear_list %}
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="{{ url_for('static', filename='images/' + gear.image) }}" alt="{{ gear.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ gear.name }}</h5>
+              <p class="card-text">Capacity: {{ gear.capacity }} | Price: &#8377; {{ gear.price }}/day</p>
+              <a href="{{ url_for('rent', gear_id=gear.id) }}" class="btn btn-primary">Rent Now</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+      <p>&copy; 2025 Hiking Gear Rental. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
+</html>
