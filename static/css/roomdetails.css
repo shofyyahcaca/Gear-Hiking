@@ -1,0 +1,63 @@
+* {
+  font-family: 'Philosopher', sans-serif;
+}
+
+
+body {
+  font-family: 'Philosopher', sans-serif;
+  width: 100%;
+}
+
+
+/* Navbar */
+
+
+header nav a:hover {
+  text-decoration-line: none;
+}
+
+
+header nav ul li a:hover {
+  text-decoration-line: none;
+  color: rgb(0,0,0);
+}
+
+
+header nav .brand-logo {
+  color: rgb(0,0,0);
+}
+
+
+header nav ul li a {
+  color: rgb(0,0,0);
+}
+
+
+header nav {
+  background-color: transparent;
+}
+
+
+
+/* Rooms */
+
+
+
+#rooms .card {
+  padding: 15px;
+  box-shadow: 2px 5px 7px 10px rgba(211,211,211,.5), 0 9px 26px 0 rgb(255, 255, 255);
+}
+
+
+
+
+
+
+
+/* Footer */
+
+#footer ul li {
+	list-style-type: none;
+	display: inline-block;
+	margin: 10%;
+}

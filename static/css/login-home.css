@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+  * {
+    font-family: 'Philosopher', sans-serif;
+  }
+
+  body {
+    font-family: 'Philosopher', sans-serif;
+    width: 100%;
+  }
+
+
+  #form #signup h2 {
+    margin-top: 15%;
+  }
+
+  /* Footer */
+
+  #footer h5 {
+    margin-top: 15%;
+  }
+
+
+  #footer ul li {
+    margin-top: 15%;
+  }
+
+
+}

@@ -1,0 +1,50 @@
+* {
+  font-family: 'Philosopher', sans-serif;
+}
+
+
+body {
+  font-family: 'Philosopher', sans-serif;
+  width: 100%;
+}
+
+
+/* Navbar */
+
+
+header nav a:hover {
+  text-decoration-line: none;
+}
+
+
+header nav ul li a:hover {
+  text-decoration-line: none;
+  color: rgb(0,0,0);
+}
+
+
+header nav .brand-logo {
+  color: rgb(0,0,0);
+}
+
+
+header nav ul li a {
+  color: rgb(0,0,0);
+}
+
+
+header nav {
+  background-color: transparent;
+}
+
+
+
+
+
+/* Footer */
+
+#footer ul li {
+	list-style-type: none;
+	display: inline-block;
+	margin: 10%;
+}

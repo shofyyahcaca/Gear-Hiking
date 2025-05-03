@@ -1,0 +1,96 @@
+* {
+  font-family: 'Philosopher', sans-serif;
+}
+
+
+body {
+  font-family: 'Philosopher', sans-serif;
+  width: 100%;
+}
+
+
+/* Navbar */
+
+
+header nav a:hover {
+  text-decoration-line: none;
+}
+
+
+header nav ul li a:hover {
+  text-decoration-line: none;
+  color: rgb(0,0,0);
+}
+
+
+header nav .brand-logo {
+  color: rgb(0,0,0);
+}
+
+
+header nav ul li a {
+  color: rgb(0,0,0);
+}
+
+
+header nav {
+  background-color: transparent;
+}
+
+
+/* Breadcrumb */
+
+#breadcrumb nav ol li a {
+  color: black;
+}
+
+
+#breadcrumb nav ol li a:hover {
+  text-decoration-line: none;
+}
+
+
+/* Few Words About Us */
+
+
+#fewword img {
+  border-radius: 25%;
+}
+
+
+
+/* Call Now */
+
+
+#call {
+  padding: 2rem 2rem;
+  margin-bottom: 2rem;
+  background-color: #8B4513;
+  border-radius: 0.3rem;
+}
+
+
+#call h3 {
+  color: rgb(0,0,0);
+}
+
+
+#call a {
+  color: rgb(255,255,255)
+}
+
+
+#call a:hover {
+  text-decoration-line: none;
+}
+
+
+
+
+/* Footer */
+
+#footer ul li {
+	list-style-type: none;
+	display: inline-block;
+	margin: 10%;
+}

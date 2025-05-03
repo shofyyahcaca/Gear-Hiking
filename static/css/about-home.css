@@ -1,0 +1,40 @@
+@media (max-width: 768px) {
+  * {
+    font-family: 'Philosopher', sans-serif;
+  }
+
+  body {
+    font-family: 'Philosopher', sans-serif;
+    width: 100%;
+  }
+
+
+
+  /* Few Words About Us */
+
+  #fewword h3 {
+    margin-top: 15%;
+  }
+
+
+  /* Below Words About Us */
+
+
+  #belowheader p {
+    margin-top: 15%;
+  }
+
+
+
+  /* Footer */
+
+  #footer h5 {
+    margin-top: 15%;
+  }
+
+
+  #footer ul li {
+    margin-top: 15%;
+  }
+
+}

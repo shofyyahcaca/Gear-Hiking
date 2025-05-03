@@ -1,0 +1,53 @@
+@media (max-width: 768px) {
+  * {
+    font-family: 'Philosopher', sans-serif;
+  }
+
+  body {
+    font-family: 'Philosopher', sans-serif;
+    width: 100%;
+  }
+
+
+  /* Our Best Rooms */
+
+  #rooms #roomone h3 {
+    margin-top: 10%;
+  }
+
+  #roomone p {
+    margin-top: 10%;
+  }
+
+  #roomtype figure {
+    margin-top: 15%;
+  }
+
+
+  /* Our Services */
+
+
+  #ourservices .card {
+    margin-top: 15%;
+  }
+
+
+  /* Testimonials */
+
+  #testilist .card {
+    margin-top: 15%;
+  }
+
+
+  /* Footer */
+
+  #footer h5 {
+    margin-top: 15%;
+  }
+
+
+  #footer ul li {
+    margin-top: 15%;
+  }
+
+}
